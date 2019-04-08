@@ -1,7 +1,6 @@
 #include <stdio.h>
-#include <stdlib.h>		// for random numbers
+#include <stdlib.h>		// for random numbers, and system() function
 #include "screen.h"
-#include <time.h>
 #include "sound.h"
 #include <signal.h>
 
@@ -18,7 +17,6 @@ int main(){
 		}
 
 		clearScreen();
-		setColors(RED, bg(YELLOW));
 		struct WAVHDR hdr;
 		fread(&hdr, sizeof(hdr), 1, f);		// read WAV header
 		fread(&sd, sizeof(sd), 1, f);		// read WAV data
