@@ -3,6 +3,7 @@
 #include "screen.h"
 #include "sound.h"
 #include <signal.h>
+#include "comm.h"
 
 int main(){
 	FILE *f;
@@ -23,6 +24,7 @@ int main(){
 		fclose(f);
 		displayWAVHDR(hdr);
 		displayWAVDATA(sd);
+		sendDATA(sd);
 	}
 	resetColors();
 	// getchar();

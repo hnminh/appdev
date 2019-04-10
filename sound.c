@@ -41,6 +41,18 @@ void displayWAVHDR(struct WAVHDR h){
 #endif
 }
 
+// this function is only called by displayWAVDATA(), so no need to put
+// a declaration in sound.h. The function finds how many peaks from 80-pieces
+// of decibel values
+int findPeaks(int d[]){
+	int c = 0;
+	for (int i = 1; i < 80; i++){
+		if (d[i] >= 75 && d[i - 1] < 75) c++;
+	}
+	if (d[0] > 75) c++;
+	return c;
+}
+
 // this function gets 1 second of samples (16000), and calculates
 // 80 pieces of decibel value, we know we need to calculate
 // one decibel value from 200 samples, decibel value is calculated
@@ -65,5 +77,10 @@ void displayWAVDATA(short s[]){
 	}
 #ifndef DEBUG
 	barChart(dB);
+	int peaks = findPeaks(dB);
+	setColors(WHITE, bg(BLACK));
+	printf("\033[1;61H");
+	printf("Peaks: %d         \n", peaks);
 #endif
 }
+

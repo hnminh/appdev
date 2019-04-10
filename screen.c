@@ -7,7 +7,8 @@ void barChart(int db[]){
 	int i, j;
 	for (i = 0; i < COL; i++){	// for 80 column
 		for (j = 0; j < db[i]/3; j++){
-			if (j > 20) setColors(GREEN, bg(BLACK));
+			if (j > 24) setColors(YELLOW, bg(BLACK));
+			else if (j > 20) setColors(GREEN, bg(BLACK));
 			else setColors(RED, bg(BLACK));
 			printf("\033[%d;%dH", 35 - j, i + 1);
 #ifdef UNICODE		// conditional compilation
@@ -18,10 +19,10 @@ void barChart(int db[]){
 		}
 	}
 	// this part is for finding peak
-	int peakCount = 0;
+	/* int peakCount = 0;
 	i = 0; j = 0;
 	while (i < COL){
-		if (db[i] > 80){
+		if (db[i] > 75){
 			j = i;
 			while (db[j] > 80 && j < COL - 1) j++;	// find the peak end point
 			int maxPivot = j;	// the end point
@@ -39,7 +40,7 @@ void barChart(int db[]){
 	}
 	printf("\033[1;61H");
 	setColors(RED, bg(WHITE));
-	printf("Peak: %d\n", peakCount);
+	printf("Peak: %d\n", peakCount); */
 }
 
 void clearScreen(void){
