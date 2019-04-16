@@ -3,6 +3,7 @@
 #define RATE 16000
 #define DUR 1
 #define RCMD "arecord -r16000 -c1 -f S16_LE -d1 -q test.wav"
+#define PI 3.14159
 
 // data structures
 struct WAVHDR{
@@ -17,7 +18,7 @@ struct WAVHDR{
 	int SampleRate;			// we will use 16000
 	int ByteRate;			// calculated by SR, NS, B/S
 	short BlockAlign;		// calculated
-	short BitsPerSample;	// should be 26
+	short BitsPerSample;	// should be 16
 
 	char Subchunk2ID[4];	// must be "data"
 	int Subchunk2Size;		// calculated

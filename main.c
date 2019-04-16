@@ -8,7 +8,7 @@
 int main(int argc, char **argv){
 	if (argc > 1){	// if the user has given some command line argument
 		printf("Test tone generator\n");
-		int fR, fL, ch,;
+		int fR, fL, ch;
 		float duration;
 		printf("No. of channels (1 or 2): ");
 		scanf("%d", &ch);
