@@ -1,1 +1,61 @@
-# This is application development ver 1
+# This is application development ver 1.1 - writted by Minh Hoang, 
+instructed by Gao Chao
+
+This application offers a possibility to turn a Raspberry Pi as a
+sound device. The application comes with 2 functions: a sound collector
+and a test tone generator.
+
+List of Content
+	1. Configuration Instruction
+	2. Installation Instruction
+	3. Operating Instruction
+	4. List of Files
+	5. Copyright
+
+1. Configuration Instruction
+	This project is built on a Raspberry Pi3, with an external USB 
+sound card and a microphone. Ethernet connection is required.
+
+2. Installation Instruction
+	- Install the latest NOOBS version for Raspberry Pi. You can get it
+		at https://www.raspberrypi.org/downloads/noobs/
+
+	- Set the external USB sound card as Default
+		+ Run "lsusb" command to check if your USB soundcard is mounted
+		+ Use "sudo nano /etc/asound.conf" command and put following 
+			content to file
+			pcm.!default {
+			  type plug
+			  slave {
+			    pcm "hw:1,0"
+			  }
+			}
+			ctl.!default {
+    			type hw
+    			card 1
+			}
+
+	- Fix the bug of arecord by downgrade the alsa-utils from
+		1.0.28 to 1.0.25
+	- Install libcurl and its development API
+
+3. Operating Instruction
+	Run "make" command to compile all the files and run "./sound.out"
+for running the program. You can also open "testcurl.txt" for accessing
+the recorded results.
+
+4. List of Files
+	- README : this file
+	- comm.c : the communication part of the project
+	- comm.h : the header file of comm.c
+	- main.c : contains the main() function
+	- makefile : the makefile of the project
+	- screen.c : the displaying part of the project
+	- screen.h : the header file of screen.c
+	- sound.c : the sound analyzing part of the project
+	- sound.h : the header file of the sound.c
+	- sound.php : the data receiving page
+	- testcurl.c : the communication testing module
+
+5. Copyright
+	2019, Minh Hoang - e1800950
