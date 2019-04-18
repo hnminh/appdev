@@ -1,5 +1,5 @@
 # This is application development ver 1.1 - writted by Minh Hoang, 
-instructed by Gao Chao
+instructed by Chao Gao
 
 This application offers a possibility to turn a Raspberry Pi as a
 sound device. The application comes with 2 functions: a sound collector
@@ -11,6 +11,8 @@ List of Content
 	3. Operating Instruction
 	4. List of Files
 	5. Copyright
+	6. Contact Info.
+	7. Credits and Acknowledgements
 
 1. Configuration Instruction
 	This project is built on a Raspberry Pi3, with an external USB 
@@ -18,7 +20,7 @@ sound card and a microphone. Ethernet connection is required.
 
 2. Installation Instruction
 	- Install the latest NOOBS version for Raspberry Pi. You can get it
-		at https://www.raspberrypi.org/downloads/noobs/
+		from https://www.raspberrypi.org/downloads/noobs/
 
 	- Set the external USB sound card as Default
 		+ Run "lsusb" command to check if your USB soundcard is mounted
@@ -34,10 +36,27 @@ sound card and a microphone. Ethernet connection is required.
     			type hw
     			card 1
 			}
+		+ Go to your home directory by command "cd $HOME", then use 
+			"nano .asoundrc" and put the same content to the file
+		+ Run "alsamixer", you should be able to see that USB sound card
+			is the default audio device
 
 	- Fix the bug of arecord by downgrade the alsa-utils from
 		1.0.28 to 1.0.25
+		+ Run "sudo apt-get update"
+		+ Run "sudo aptitude versions alsa-utils" to check if version
+			1.0.25 of alsa-util is available
+		+ Run "sudo apt-get install alsa-utils=1.0.25-4" to downgrade
+			then reboot
+
 	- Install libcurl and its development API
+		+ Use command "ls /usr/include/curl" or 
+			"ls /usr/include/arm-linux-gnueabihf/curl" to identify
+			that libcurl is installed
+		+ If the folder does not exist, run "sudo apt-get update"
+		+ Run "sudo apt-get install libcurl3" and 
+			"sudo apt-get install libcurl4-openssl-dev" to install
+			libcurl and its development API
 
 3. Operating Instruction
 	Run "make" command to compile all the files and run "./sound.out"
@@ -59,3 +78,10 @@ the recorded results.
 
 5. Copyright
 	2019, Minh Hoang - e1800950
+
+6. Contact Info.
+	Minh Hoang, e1800950@edu.vamk.fi
+
+7. Credits and Acknowledgements
+	This project is written by me, instructed by Dr. Chao Gao,
+	and a SD card is given by VAMK.
