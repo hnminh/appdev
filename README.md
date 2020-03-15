@@ -96,7 +96,7 @@ to compile all the files and run
 for running the program. You can also open ```testcurl.txt``` for accessing the recorded results.
 
 ## 4. List of Files
-* README.md : this file
+* README.md
 * comm.c : the communication part of the project
 * comm.h : the header file of comm.c
 * main.c : contains the main() function
